@@ -24,7 +24,7 @@
         httpreq.onreadystatechange=function(){
             if(this.readyState==4 && this.status==200){
                 forcast=JSON.parse(this.responseText);
-                document.getElementById("output").innerHTML="The Weather Of "+ofcity+" is "+forcast.data[0].temp+" degree celsius";
+                document.getElementById("output").innerHTML="The Temperature Of "+ofcity+" is "+forcast.data[0].temp+" degree celsius"+" weather is "+forcast.data[0].weather.description;
                 //forecast.data[0].temp is written as data is stored in array form 
 
             }
