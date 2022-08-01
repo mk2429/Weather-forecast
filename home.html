@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    <head>
+        <title> Weather Forcast Project By MK</title>
+    <link rel="stylesheet" type="text/css" href="style.css">    
+    </head>
+    <body>
+<div class="container">
+    <marquee style="margin-top: 20px;">An Weather Forecast Project By Mayank Kesharwani</marquee>
+<h1 class="header">Know Weather Around You ! </h1>
+<input id="city" placeholder="Enter Your City">
+<button onclick="weatherfore()">Get Weather</button>
+
+<center><p id="output"></p></center>
+<script type="text/javascript">
+    function weatherfore(){
+        ofcity=document.getElementById("city").value;
+        
+        httpreq=new XMLHttpRequest();
+       var u="https://api.weatherbit.io/v2.0/current?city="+ofcity+"&key=e1783e3683b4436088e040bd3494a2f1";
+       
+       httpreq.open("Get",u);
+        httpreq.send();
+        httpreq.onreadystatechange=function(){
+            if(this.readyState==4 && this.status==200){
+                forcast=JSON.parse(this.responseText);
+                document.getElementById("output").innerHTML="The Weather Of "+ofcity+" is "+forcast.data[0].temp+" degree celsius";
+                //forecast.data[0].temp is written as data is stored in array form 
+
+            }
+        }
+    }
+    </script>
+ <footer>
+<div class="footer">
+    <div style="height:80%;">
+    <a href="https://www.linkedin.com/in/mayank-kesharwani-a3232a241/" target="_blank"><img src="img\linkedin.png" height="60%" width="30px"></a>
+    <a href="https://github.com/mk2429" target="_blank"><img src="img\git.png" height="60%" width="30px"></a>
+    </div>
+    <p style="text-align: center;color: aliceblue;"> &#169; COPYRIGHT MK</p>
+</div>
+</footer>
+
+    </div>
+</body>
+</html>
